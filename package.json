@@ -1,0 +1,15 @@
+{
+  "name": "quiz-app",
+  "version": "1.0.0",
+  "description": "A simple quiz app built with Express.js and React",
+  "main": "server/index.js",
+  "scripts": {
+    "start:server": "cd server && yarn start",
+    "start:client": "cd client && yarn start",
+    "start": "concurrently \"yarn run start:server\" \"yarn run start:client\""
+  },
+  "dependencies": {
+    "concurrently": "^7.0.0",
+    "react-router-dom": "^6.11.0"
+  }
+}
