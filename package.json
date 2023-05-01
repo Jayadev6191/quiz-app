@@ -5,8 +5,10 @@
   "main": "server/index.js",
   "scripts": {
     "start:server": "cd server && yarn start",
-    "start:client": "cd client && yarn start",
-    "start": "concurrently \"yarn run start:server\" \"yarn run start:client\""
+    "start:client": "cd client && PORT=3000 yarn start",
+    "start": "concurrently \"yarn run start:server\" \"yarn run start:client\"",
+    "setup": "yarn install && cd client && yarn install && cd ../server && yarn install",
+    "clean": "find . -name node_modules -type d -exec rm -rf {} +"
   },
   "dependencies": {
     "concurrently": "^7.0.0",
