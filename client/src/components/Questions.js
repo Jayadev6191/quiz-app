@@ -16,8 +16,10 @@ const Questions = () => {
   const [currentQuestion, setCurrentQuestion] = useState({});
   const [hasSelectedOption, setHasSelectedOption] = useState(false);
 
+  const apiBaseUrl = `http://${window.location.hostname}:5000`;
+
   useEffect(() => {
-    fetch(`http://localhost:5000/questions/${questionNumber}`)
+    fetch(`${apiBaseUrl}/questions/${questionNumber}`)
       .then((response) => response.json())
       .then((data) => {
         // Do something with the data returned from the server
