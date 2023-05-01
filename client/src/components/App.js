@@ -11,10 +11,6 @@ function App() {
           <Route exact path="/">
             <Questions />
           </Route>
-          <Route path="/about">
-            {/* Render your about page component here */}
-            <div>About</div>
-          </Route>
         </Switch>
       </StyledAppContainer>
     </Router>
