@@ -6,7 +6,16 @@ const StyledQuestionContainer = styled.div`
 
 const StyledQuestionTitle = styled.h2``;
 
-const StledQuestionOptions = styled.div`
+const StyledQuestionCodeBlock = styled.div``;
+
+const StyledQuestionOptionContainer = styled.div`
+  max-height: 500px;
+  overflow-y: scroll;
+  margin: 30px 10px;
+  padding: 30px;
+`;
+
+const StyledQuestionOptions = styled.div`
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -14,8 +23,17 @@ const StledQuestionOptions = styled.div`
 
 const StyledQuestionOption = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-direction: row;
+  min-width: 800px;
+
+  & > input {
+    margin-right: 20px;
+  }
+
+  & > pre {
+    min-width: 800px;
+  }
 `;
 
 const StyledQuestionFooter = styled.div`
@@ -27,7 +45,9 @@ const StyledQuestionFooter = styled.div`
 export {
   StyledQuestionContainer,
   StyledQuestionTitle,
-  StledQuestionOptions,
+  StyledQuestionCodeBlock,
+  StyledQuestionOptionContainer,
+  StyledQuestionOptions,
   StyledQuestionOption,
   StyledQuestionFooter,
 };

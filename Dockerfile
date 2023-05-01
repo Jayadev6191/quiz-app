@@ -11,7 +11,7 @@ WORKDIR /app
 # Copy the package.json and package-lock.json files for the app in the root directory
 COPY package*.json ./
 
-# Install the app dependencies
+# Install the app dependencies from root
 RUN yarn install
 
 # Copy the package.json and package-lock.json files for the client to the container
@@ -33,7 +33,7 @@ COPY server ./server
 # Build the client code
 RUN cd client && yarn run build
 
-# Expose port 3000 for the client
+# Expose port 3000 for the client, don't expose server as you don't want to make API calls directly from outside the container
 EXPOSE 3000
 
 # Start the server
