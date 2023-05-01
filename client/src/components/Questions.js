@@ -29,6 +29,7 @@ const Questions = () => {
           question,
           question_code_block,
           options,
+          option_type,
           language,
           answer_format,
         } = data;
@@ -36,6 +37,7 @@ const Questions = () => {
           question,
           question_code_block,
           options,
+          option_type,
           language,
           answer_format,
         });
@@ -70,6 +72,74 @@ const Questions = () => {
     setQuestionNumber(index - 1);
   };
 
+  const CodeBlockOptions = ({ currentQuestion }) => (
+    <StyledQuestionOptions>
+      {currentQuestion &&
+        currentQuestion?.options?.map((option, index) => {
+          return (
+            <StyledQuestionOption
+              key={index}
+              onClick={() => handleOptionClick(index)}
+            >
+              {currentQuestion?.answer_format === "single" ? (
+                <input
+                  type="radio"
+                  id={`option-${index}`}
+                  name="options"
+                  value={index}
+                />
+              ) : (
+                <input
+                  type="checkbox"
+                  id={`option-${index}`}
+                  name="options"
+                  value={index}
+                />
+              )}
+              <SyntaxHighlighter
+                language={currentQuestion.language}
+                style={darcula}
+                key={index}
+              >
+                {option}
+              </SyntaxHighlighter>
+            </StyledQuestionOption>
+          );
+        })}
+    </StyledQuestionOptions>
+  );
+
+  const TextOptions = ({ currentQuestion }) => (
+    <StyledQuestionOptions>
+      {currentQuestion &&
+        currentQuestion?.options?.map((option, index) => {
+          return (
+            <StyledQuestionOption
+              key={index}
+              onClick={() => handleOptionClick(index)}
+            >
+              {currentQuestion?.answer_format === "single" ? (
+                <input
+                  type="radio"
+                  id={`option-${index}`}
+                  name="options"
+                  value={index}
+                />
+              ) : (
+                <input
+                  type="checkbox"
+                  id={`option-${index}`}
+                  name="options"
+                  value={index}
+                />
+              )}
+              <span>{option}</span>
+            </StyledQuestionOption>
+          );
+        })}
+    </StyledQuestionOptions>
+  );
+
   return (
     <StyledQuestionContainer>
       <StyledQuestionTitle>{currentQuestion.question}</StyledQuestionTitle>
@@ -84,40 +154,11 @@ const Questions = () => {
         </StyledQuestionCodeBlock>
       ) : null}
       <StyledQuestionOptionContainer>
-        <StyledQuestionOptions>
-          {currentQuestion &&
-            currentQuestion?.options?.map((option, index) => {
-              return (
-                <StyledQuestionOption
-                  key={index}
-                  onClick={() => handleOptionClick(index)}
-                >
-                  {currentQuestion?.answer_format === "single" ? (
-                    <input
-                      type="radio"
-                      id={`option-${index}`}
-                      name="options"
-                      value={index}
-                    />
-                  ) : (
-                    <input
-                      type="checkbox"
-                      id={`option-${index}`}
-                      name="options"
-                      value={index}
-                    />
-                  )}
-                  <SyntaxHighlighter
-                    language={currentQuestion.language}
-                    style={darcula}
-                    key={index}
-                  >
-                    {option}
-                  </SyntaxHighlighter>
-                </StyledQuestionOption>
-              );
-            })}
-        </StyledQuestionOptions>
+        {currentQuestion?.option_type === "code_blocks" ? (
+          <CodeBlockOptions currentQuestion={currentQuestion} />
+        ) : (
+          <TextOptions currentQuestion={currentQuestion} />
+        )}
       </StyledQuestionOptionContainer>
       <StyledQuestionFooter>
         <StyledButton
