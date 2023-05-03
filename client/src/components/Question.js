@@ -126,12 +126,14 @@ const Question = ({
     <StyledQuestionContainer>
       <StyledQuestionTitle>
         {currentQuestion.question}
-        <StyledQuestionInfo
-          href={currentQuestion.info_redirect_url}
-          target="_blank"
-        >
-          <FontAwesomeIcon icon={faInfoCircle} />
-        </StyledQuestionInfo>
+        {currentQuestion.info_redirect_url ? (
+          <StyledQuestionInfo
+            href={currentQuestion.info_redirect_url}
+            target="_blank"
+          >
+            <FontAwesomeIcon icon={faInfoCircle} />
+          </StyledQuestionInfo>
+        ) : null}
       </StyledQuestionTitle>
       {currentQuestion?.question_code_block ? (
         <StyledQuestionCodeBlock>
