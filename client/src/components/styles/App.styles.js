@@ -41,4 +41,21 @@ const StyledButton = styled.button`
   }
 `;
 
-export { StyledAppContainer, StyledButton };
+const StyledFooter = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  flex-drection: row;
+`;
+
+const StyledReportCard = styled.div`
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  width: 600px;
+  flex-direction: column;
+  height: 400px;
+`;
+
+export { StyledAppContainer, StyledButton, StyledFooter, StyledReportCard };

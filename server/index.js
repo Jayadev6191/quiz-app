@@ -2,7 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 // import routes
-const apiRouter = require("./routes/api");
+const questionsRouter = require("./routes/questions");
+const submitRouter = require("./routes/submit");
 
 const app = express();
 
@@ -10,7 +11,8 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // use routes
-app.use(apiRouter);
+app.use(questionsRouter);
+app.use(submitRouter);
 
 const port = process.env.PORT || 5000;
 
