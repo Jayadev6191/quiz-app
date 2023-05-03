@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { StyledAppContainer } from "./styles/App.styles";
-import Questions from "./Questions";
+import Quiz from "./Quiz";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <StyledAppContainer className="App">
         <Switch>
           <Route exact path="/">
-            <Questions />
+            <Quiz />
           </Route>
         </Switch>
       </StyledAppContainer>

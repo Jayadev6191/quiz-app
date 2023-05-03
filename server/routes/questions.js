@@ -1,6 +1,7 @@
 const express = require("express");
-const router = express.Router();
 const { data } = require("../data");
+
+const router = express.Router();
 
 router.get("/questions/:id", (req, res) => {
   const id = req.params.id;
@@ -11,6 +12,7 @@ router.get("/questions/:id", (req, res) => {
     option_type,
     language,
     answer_format,
+    info_redirect_url,
   } = data[id];
   const resp = {
     question,
@@ -19,6 +21,8 @@ router.get("/questions/:id", (req, res) => {
     option_type,
     language,
     answer_format,
+    info_redirect_url,
+    total_question_count: data.length,
   };
   res.json(resp);
 });

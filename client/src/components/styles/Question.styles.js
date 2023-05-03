@@ -31,8 +31,15 @@ const StyledQuestionOption = styled.div`
     margin-right: 20px;
   }
 
-  & > pre {
-    min-width: 800px;
+  & > label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    & > pre {
+      min-width: 800px;
+    }
   }
 `;
 
@@ -42,9 +49,14 @@ const StyledQuestionFooter = styled.div`
   flex-drection: row;
 `;
 
+const StyledQuestionInfo = styled.a`
+  margin-left: 20px;
+`;
+
 export {
   StyledQuestionContainer,
   StyledQuestionTitle,
+  StyledQuestionInfo,
   StyledQuestionCodeBlock,
   StyledQuestionOptionContainer,
   StyledQuestionOptions,
