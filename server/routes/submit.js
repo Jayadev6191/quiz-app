@@ -6,7 +6,7 @@ const { data } = require("../data");
 const router = express.Router();
 
 router.post("/submit", (req, res) => {
-  const { formatted_answers } = req.body;
+  const { formatted_answers, email } = req.body;
   const score = processSubmission(data, formatted_answers);
 
   // status - PASS OR FAIL
@@ -18,7 +18,10 @@ router.post("/submit", (req, res) => {
     status = STATUS_PASS;
   }
   // Make any API call to any external hooks if necessary
-  // TBD ^^^
+  console.log(`email of the user is ${email}`);
+  // We have email id of the user as part of the req.body
+  // that can be used to call any external API hook
+  // If needed
 
   // return the result back to the UI
   res.json({ score, status });
