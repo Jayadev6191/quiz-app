@@ -12,3 +12,7 @@ A simple quiz app built with React.js and Express.js
 
 - Run `docker build --no-cache -t quiz-app:latest .` to build the app
 - Run `docker run -p 3000:8080 quiz-app` to run the container
+
+# App Workflow
+
+![Alt Text](https://github.com/Jayadev6191/quiz-app/blob/main/misc/ezgif.com-video-to-gif.gif)
