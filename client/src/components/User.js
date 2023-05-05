@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Button, Grid, TextField } from "@material-ui/core";
 import { StyledUserForm, StyledInputRow } from "./styles/User.styles";
 import { makeStyles } from "@material-ui/core/styles";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   startButton: {
@@ -21,7 +21,7 @@ const User = () => {
   const [isValidEmail, setIsValidEmail] = useState(false);
 
   const classes = useStyles();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     inputRef.current.focus();
@@ -38,8 +38,7 @@ const User = () => {
   const handleButtonClick = () => {
     // pass the email to a component in a different route
     if (isValidEmail) {
-      console.log(`/quiz?email=${email}`);
-      history.push(`/quiz?email=${email}`);
+      navigate(`/quiz?email=${email}`);
     }
   };
 

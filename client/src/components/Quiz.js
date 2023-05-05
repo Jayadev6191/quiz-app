@@ -21,8 +21,6 @@ const Quiz = () => {
   const queryParams = new URLSearchParams(location.search);
   const email = queryParams.get("email");
 
-  console.log("hello");
-
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchQuestion(questionNumber);
