@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import {
   StyledFooter,
   StyledButton,
@@ -15,6 +16,12 @@ const Quiz = () => {
   const [totalQuestionCount, setTotalQuestionCount] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [result, setResult] = useState({});
+
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const email = queryParams.get("email");
+
+  console.log("hello");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,7 +72,7 @@ const Quiz = () => {
   };
 
   const handleSubmitClick = async () => {
-    const data = await submitQuiz(answers);
+    const data = await submitQuiz(answers, email);
     if (data) {
       setIsSubmitted(true);
       setResult({ score: data?.score, status: data?.status });

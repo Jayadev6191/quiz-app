@@ -8,7 +8,7 @@ const formatAnswers = (answers) => {
   });
   return result;
 };
-export const submitQuiz = async (answers) => {
+export const submitQuiz = async (answers, email) => {
   try {
     const apiBaseUrl = "http://localhost:5000";
     // format the answers into array of arrays
@@ -18,7 +18,7 @@ export const submitQuiz = async (answers) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ formatted_answers }),
+      body: JSON.stringify({ formatted_answers, email }),
     });
     const data = await response.json();
     return data;
